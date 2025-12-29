@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إلى نوري ❤️</title>
+
+<style>
+body {
+    font-family: sans-serif;
+    background: linear-gradient(135deg,#fff0f3,#ffe5ec);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    margin:0;
+    text-align:center;
+    overflow:hidden;
+}
+
+.card {
+    background:white;
+    padding:25px;
+    border-radius:22px;
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
+    max-width:360px;
+    width:90%;
+    animation:fadeZoom 1s ease forwards;
+    position:relative;
+    z-index:5;
+}
+
+@keyframes fadeZoom {
+    from {opacity:0; transform:scale(.9)}
+    to {opacity:1; transform:scale(1)}
+}
+
+h1 { color:#ff4d6d; }
+
+input {
+    width:100%;
+    padding:12px;
+    margin:20px 0;
+    border:2px solid #ffd6e0;
+    border-radius:25px;
+    text-align:center;
+    font-size:18px;
+}
+
+button {
+    background:#ff4d6d;
+    color:white;
+    border:none;
+    padding:12px;
+    border-radius:25px;
+    font-size:18px;
+    cursor:pointer;
+    width:100%;
+}
+
+#content { display:none; }
+
+.main-img {
+    width:100%;
+    border-radius:15px;
+    margin-bottom:15px;
+    animation:fadeUp 1.2s ease forwards;
+}
+
+@keyframes fadeUp {
+    from {opacity:0; transform:translateY(15px)}
+    to {opacity:1; transform:translateY(0)}
+}
+
+.msg {
+    font-size:17px;
+    line-height:1.7;
+    color:#444;
+    white-space:pre-line;
+    animation:fadeUp 1.5s ease forwards;
+}
+
+.petal {
+    position:fixed;
+    top:-10%;
+    font-size:20px;
+    animation:fall linear forwards;
+    opacity:.8;
+}
+
+@keyframes fall {
+    to { transform:translateY(110vh); opacity:0 }
+}
+
+.music-btn {
+    margin-top:15px;
+    font-size:14px;
+    color:#ff4d6d;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div id="login" class="card">
+    <div style="font-size:50px">🔒</div>
+    <h1>Welcome Nouri</h1>
+    <p>اكتبي تاريخنا المميز ❤️</p>
+    <input type="text" id="pass" placeholder="24/8">
+    <button onclick="openGift()">Unlock ❤️</button>
+</div>
+
+<div id="content" class="card">
+    <img src="https://i.ibb.co/v4S8L8T/image.png" class="main-img">
+
+    <div class="msg">
+هالو يحبيبتي..
+عملتلك موقع مخصوص عشان اقولك إن سنة جديدة دخلناها مع بعض
+وانتي بقيتي جزء لا يتجزأ من حياتي
+كل سنة وإحنا سوا وانتي جنبي
+بحبككك ينوري ❤️
+    </div>
+
+    <div class="music-btn" onclick="toggleMusic()">🎵 كتم / تشغيل الموسيقى</div>
+</div>
+
+<audio id="music">
+<source src="https://www.mboxdrive.com/Amr%20Diab%20-%20Maqudars%20Ana.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let playing = true;
+
+function openGift() {
+    let v = document.getElementById('pass').value;
+    if(v==="24/8" || v==="٢٤/٨"){
+        login.style.display="none";
+        content.style.display="block";
+
+        let m = document.getElementById("music");
+        m.currentTime = 40;
+        m.play();
+
+        setInterval(()=>{
+            let p=document.createElement("div");
+            p.className="petal";
+            p.innerHTML=["❤️","🌸","✨"][Math.floor(Math.random()*3)];
+            p.style.left=Math.random()*100+"vw";
+            p.style.animationDuration=(Math.random()*4+3)+"s";
+            document.body.appendChild(p);
+            setTimeout(()=>p.remove(),7000);
+        },500);
+    } else {
+        alert("التاريخ غلط يا نوري 😉");
+    }
+}
+
+function toggleMusic(){
+    let m=document.getElementById("music");
+    if(playing){ m.pause(); }
+    else{ m.play(); }
+    playing=!playing;
+}
+</script>
+
+</body>
+</html>
